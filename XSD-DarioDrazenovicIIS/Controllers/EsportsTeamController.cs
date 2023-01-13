@@ -1,4 +1,5 @@
-﻿using IISDarioDrazenovicXSD.Model;
+﻿using Commons.Xml.Relaxng;
+using IISDarioDrazenovicXSD.Model;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -64,6 +65,49 @@ namespace IISDarioDrazenovicXSD.Controllers
                 return false;
             }
         }
+
+
+        [HttpPost("validate-rng")]
+        public bool ValidateWithRng(XmlElement esportTeamArray)
+        {
+            XmlDocument documentXML = esportTeamArray.OwnerDocument;
+            documentXML.AppendChild(esportTeamArray);
+            var errors = false;
+            XmlReader xmlReader = new XmlNodeReader(documentXML);
+            XmlReader rng = XmlReader.Create(Path.GetFullPath("shopItem_rng.rng"));
+            using (var reader = new RelaxngValidatingReader(xmlReader, rng))
+            {
+                reader.InvalidNodeFound += (source, message) =>
+                {
+                    Console.WriteLine("Error: " + message);
+                    errors = true;
+                    return true;
+                };
+                XDocument doc = XDocument.Load(reader);
+            }
+
+            if (errors)
+            {
+                return false;
+            }
+            else
+            {
+                DataContractSerializer deserijalizacija = new DataContractSerializer(typeof(EsportsTeamArray));
+                MemoryStream streamXml = new MemoryStream();
+                documentXML.Save(streamXml);
+                streamXml.Position = 0;
+                EsportsTeamArray sa = (EsportsTeamArray)deserijalizacija.ReadObject(streamXml);
+
+                foreach (var item in sa.EsportsTeamList)
+                {
+                    Startup.EsportsTeamArray.EsportsTeamList.Add(item);
+                }
+                return true;
+            }
+
+        }
+
+
 
         /*private List<EsportsTeamArray> ListOfTeams;
 
