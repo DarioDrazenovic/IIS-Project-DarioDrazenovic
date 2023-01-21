@@ -1,0 +1,22 @@
+﻿<element name="EsportsTeamArray"
+xmlns="http://relaxng.org/ns/structure/1.0"
+ns="http://schemas.datacontract.org/2004/07/XSD-DarioDrazenovicIIS.Model">
+  <element  name="EsportsTeamList">
+    <oneOrMore>
+      <element name="EsportsItem">
+        <element name="Id">
+          <text/>
+        </element>
+        <element name="Type">
+          <text/>
+        </element>
+        <element name="Name">
+          <text/>
+        </element>
+		<element name="Cost">
+		<data type="double" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"/>
+		</element>
+		</element >
+    </oneOrMore>
+  </element >
+</element>

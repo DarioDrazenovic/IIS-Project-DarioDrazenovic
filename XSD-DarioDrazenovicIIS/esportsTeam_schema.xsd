@@ -1,10 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xs:schema id="esportsTeam_schema"
-    targetNamespace="http://tempuri.org/esportsTeam_schema.xsd"
-    elementFormDefault="qualified"
-    xmlns="http://tempuri.org/esportsTeam_schema.xsd"
-    xmlns:mstns="http://tempuri.org/esportsTeam_schema.xsd"
-    xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema xmlns:i="http://www.w3.org/2001/XMLSchema-instance" attributeFormDefault="unqualified" elementFormDefault="qualified"
+ targetNamespace="http://schemas.datacontract.org/2004/07/XSD-DarioDrazenovicIIS.Model" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   
   <xs:element name="EsportsTeamArray">
     <xs:complexType>

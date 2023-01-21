@@ -74,7 +74,7 @@ namespace IISDarioDrazenovicXSD.Controllers
             documentXML.AppendChild(esportTeamArray);
             var errors = false;
             XmlReader xmlReader = new XmlNodeReader(documentXML);
-            XmlReader rng = XmlReader.Create(Path.GetFullPath("shopItem_rng.rng"));
+            XmlReader rng = XmlReader.Create(Path.GetFullPath("esportsTeam_rng.rng"));
             using (var reader = new RelaxngValidatingReader(xmlReader, rng))
             {
                 reader.InvalidNodeFound += (source, message) =>
