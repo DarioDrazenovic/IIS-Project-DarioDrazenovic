@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<EsportsTeamArray xmlns="http://schemas.datacontract.org/2004/07/XSD-DarioDrazenovicIIS.Model" xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schemas.datacontract.org/2004/07/XSD-DarioDrazenovicIIS.Model schema.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<EsportsTeamArray xmlns="http://schemas.datacontract.org/2004/07/XSD-DarioDrazenovicIIS.Model" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <EsportsTeamList>
     <EsportsTeam>
       <Id>string</Id>
