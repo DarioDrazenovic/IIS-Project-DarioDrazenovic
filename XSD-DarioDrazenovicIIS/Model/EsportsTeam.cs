@@ -10,6 +10,7 @@ namespace XSD_DarioDrazenovicIIS.Model
     [DataContract(Namespace = "http://schemas.datacontract.org/2004/07/XSD-DarioDrazenovicIIS.Model")]
     public class EsportsTeamArray
     {
+        //this property should be the first property in the serialized data when used with a data contract serializer.
         [DataMember(Order = 0)]
         public List<EsportsTeam> EsportsTeamList { get; set; }
 

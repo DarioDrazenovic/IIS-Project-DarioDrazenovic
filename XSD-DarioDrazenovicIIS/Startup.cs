@@ -1,15 +1,4 @@
 ﻿using XSD_DarioDrazenovicIIS.Model;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using static XSD_DarioDrazenovicIIS.Model.EsportsTeamArray;
 
 namespace XSD_DarioDrazenovicIIS
@@ -29,31 +18,34 @@ namespace XSD_DarioDrazenovicIIS
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            // Cross-Origin Resource Sharing -> allows requests from any origin, method, and header.
             services.AddCors(Options => {
                 Options.AddPolicy("Cors", builder =>
                 {
                     builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
                 });
             });
+            // Support for the XML format when returning responses from the API.
             services.AddControllers().AddXmlDataContractSerializerFormatters();
 
+            // Support for the Model-View-Controller (MVC) pattern
             services.AddMvc();
 
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
+                // Enable the developer exception page that displays detailed error information when an unhandled exception occurs.
                 app.UseDeveloperExceptionPage();
+                // Enable the Swagger middleware, which generates and serves the Swagger documents.
                 app.UseSwagger();
+                // Enable the Swagger UI, which provides an interactive UI for users to read the API documentation.
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "DarioDrazenovicRestApi"));
             }
 
@@ -61,8 +53,10 @@ namespace XSD_DarioDrazenovicIIS
 
             app.UseAuthorization();
 
+            // "app.UseEndpoints" sets up endpoint routing.
             app.UseEndpoints(endpoints =>
             {
+                // "endpoints.MapControllers()" maps the controllers in the application to endpoints.
                 endpoints.MapControllers();
             });
         }

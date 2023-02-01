@@ -25,9 +25,11 @@ namespace XSD_DarioDrazenovicIIS.Controllers
             try
             {
                 bool fail = false;
+                // It creates an XML document object from the esportsTeamArray input.
                 XmlDocument documentXML = esportsTeamArray.OwnerDocument;
                 documentXML.AppendChild(esportsTeamArray);
 
+                // It sets up an XML schema set, adds the XSD schema file to it, and creates an XmlReader from the XML document.
                 XmlSchemaSet schemaSet = new XmlSchemaSet();
                 schemaSet.Add("http://schemas.datacontract.org/2004/07/XSD-DarioDrazenovicIIS.Model", Path.GetFullPath("esportsTeam_schema.xsd"));
                 XmlReader xmlReader = new XmlNodeReader(documentXML);
@@ -41,9 +43,12 @@ namespace XSD_DarioDrazenovicIIS.Controllers
 
                 if (!fail)
                 {
+                    // The method serializes the XDocument into an object of type EsportsTeamArray using the DataContractSerializer class.
                     DataContractSerializer deserialization = new DataContractSerializer(typeof(EsportsTeamArray));
                     MemoryStream streamXml = new MemoryStream();
                     document.Save(streamXml);
+                    // Sets the position of the stream to the beginning of the stream,
+                    // so that the ReadObject method of the DataContractSerializer can read the entire serialized data stored in the MemoryStream.
                     streamXml.Position = 0;
 
                     EsportsTeamArray esportsT = (EsportsTeamArray)deserialization.ReadObject(streamXml);
@@ -52,6 +57,7 @@ namespace XSD_DarioDrazenovicIIS.Controllers
                     {
                         Startup.EsportsTeamArray.EsportsTeamList.Add(item);
                     }
+
 
                     return true;
                 }
