@@ -1,22 +1,41 @@
-﻿<element name="EsportsTeamArray"
-xmlns="http://relaxng.org/ns/structure/1.0"
-ns="http://schemas.datacontract.org/2004/07/XSD-DarioDrazenovicIIS.Model">
-  <element  name="EsportsTeamList">
-    <oneOrMore>
-      <element name="EsportsItem">
-        <element name="Id">
-          <text/>
-        </element>
-        <element name="Type">
-          <text/>
-        </element>
-        <element name="Name">
-          <text/>
-        </element>
-		<element name="Cost">
-		<data type="double" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"/>
-		</element>
-		</element >
-    </oneOrMore>
-  </element >
-</element>
+﻿<rng:grammar xmlns:rng="http://relaxng.org/ns/structure/1.0" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:i="http://www.w3.org/2001/XMLSchema-instance" ns="http://schemas.datacontract.org/2004/07/XSD-DarioDrazenovicIIS.Model" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+
+  <rng:start combine="choice">
+    <rng:ref name="EsportsTeamArray"/>
+  </rng:start>
+  <rng:define name="EsportsTeamArray">
+    <rng:element name="EsportsTeamArray">
+
+
+      <rng:element name="EsportsTeamList">
+
+
+        <rng:oneOrMore>
+          <rng:element name="EsportsTeam">
+
+
+            <rng:element name="Id">
+              <rng:data type="string"/>
+            </rng:element>
+            <rng:element name="Type">
+              <rng:data type="string"/>
+            </rng:element>
+            <rng:element name="Name">
+              <rng:data type="string"/>
+            </rng:element>
+            <rng:element name="Cost">
+              <rng:data type="double"/>
+            </rng:element>
+
+
+          </rng:element>
+        </rng:oneOrMore>
+
+
+      </rng:element>
+
+
+    </rng:element>
+  </rng:define>
+
+</rng:grammar>

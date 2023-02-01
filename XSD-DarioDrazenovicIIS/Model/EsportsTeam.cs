@@ -5,9 +5,9 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IISDarioDrazenovicXSD.Model
+namespace XSD_DarioDrazenovicIIS.Model
 {
-    [DataContract(Namespace = "http://schemas.datacontract.org/2004/07/IISDarioDrazenovicXSD.Model")]
+    [DataContract(Namespace = "http://schemas.datacontract.org/2004/07/XSD-DarioDrazenovicIIS.Model")]
     public class EsportsTeamArray
     {
         [DataMember(Order = 0)]
@@ -23,7 +23,7 @@ namespace IISDarioDrazenovicXSD.Model
             EsportsTeamList = esportsTeamList;
         }
 
-        [DataContract(Namespace = "http://schemas.datacontract.org/2004/07/IISDarioDrazenovicXSD.Model")]
+        [DataContract(Namespace = "http://schemas.datacontract.org/2004/07/XSD-DarioDrazenovicIIS.Model")]
         public class EsportsTeam
         {
             public EsportsTeam(string id, string type, string name, double cost)

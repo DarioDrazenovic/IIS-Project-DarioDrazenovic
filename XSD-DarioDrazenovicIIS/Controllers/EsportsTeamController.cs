@@ -1,5 +1,5 @@
 ﻿using Commons.Xml.Relaxng;
-using IISDarioDrazenovicXSD.Model;
+using XSD_DarioDrazenovicIIS.Model;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -13,7 +13,7 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Schema;
 
-namespace IISDarioDrazenovicXSD.Controllers
+namespace XSD_DarioDrazenovicIIS.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -29,7 +29,7 @@ namespace IISDarioDrazenovicXSD.Controllers
                 documentXML.AppendChild(esportsTeamArray);
 
                 XmlSchemaSet schemaSet = new XmlSchemaSet();
-                schemaSet.Add("http://schemas.datacontract.org/2004/07/IISDarioDrazenovicXSD.Model", Path.GetFullPath("esportsTeam_schema.xsd"));
+                schemaSet.Add("http://schemas.datacontract.org/2004/07/XSD-DarioDrazenovicIIS.Model", Path.GetFullPath("esportsTeam_schema.xsd"));
                 XmlReader xmlReader = new XmlNodeReader(documentXML);
                 XDocument document = XDocument.Load(xmlReader);
 
@@ -44,7 +44,7 @@ namespace IISDarioDrazenovicXSD.Controllers
                     DataContractSerializer deserialization = new DataContractSerializer(typeof(EsportsTeamArray));
                     MemoryStream streamXml = new MemoryStream();
                     document.Save(streamXml);
-                    streamXml.Position= 0;
+                    streamXml.Position = 0;
 
                     EsportsTeamArray esportsT = (EsportsTeamArray)deserialization.ReadObject(streamXml);
 

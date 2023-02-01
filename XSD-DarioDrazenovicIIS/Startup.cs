@@ -1,4 +1,4 @@
-﻿using IISDarioDrazenovicXSD.Model;
+﻿using XSD_DarioDrazenovicIIS.Model;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -10,9 +10,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using static IISDarioDrazenovicXSD.Model.EsportsTeamArray;
+using static XSD_DarioDrazenovicIIS.Model.EsportsTeamArray;
 
-namespace IISDarioDrazenovicXSD
+namespace XSD_DarioDrazenovicIIS
 {
     public class Startup
     {
@@ -54,7 +54,7 @@ namespace IISDarioDrazenovicXSD
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "RESTApiIIS v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "DarioDrazenovicRestApi"));
             }
 
             app.UseRouting();
